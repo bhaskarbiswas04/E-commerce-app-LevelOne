@@ -11,7 +11,7 @@ export const categoriesData = [
   },
   {
     imageUrl:
-      "https://cdn.pixabay.com/photo/2024/11/08/05/28/man-9182458_1280.jpg",
+      "https://img.freepik.com/free-photo/full-shot-kids-posing-together_23-2149853383.jpg?semt=ais_incoming&w=740&q=80",
     title: "Kids",
   },
   {
