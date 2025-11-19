@@ -1,6 +1,6 @@
 export const newCollection = [
   {
-    title: "Summer Collection",
+    title: "Winter Collection",
     description:
       "Check out our best winter collection to stay warm in style this season",
     image:
