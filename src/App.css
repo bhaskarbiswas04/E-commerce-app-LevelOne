@@ -79,13 +79,12 @@
   object-fit: cover;
 }
 
-/* Collection Styling */
+/* Collection cards Styling */
 .collection-card {
-  background: #d9d9d9;
+  background: #eae1e1;
   /* light grey bg */
-  border-radius: 6px;
-  width: 100%;
-  min-height: 200px;
+  /* width: 100%;
+  min-height: 200px; */
 }
 .image-box {
   width: 150px;

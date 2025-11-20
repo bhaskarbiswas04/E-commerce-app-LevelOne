@@ -9,7 +9,7 @@ export default function Home() {
 
     return (
       <div className="container">
-        <div className="d-flex justify-content-between">
+        <div className="d-flex gap-3 mt-4">
           {categoriesData.map((category) => {
             return (
               <CategoryCard
@@ -29,10 +29,14 @@ export default function Home() {
           />
         </div>
 
-        <div className="d-flex justify-content-between">
+        <div className="d-flex gap-5">
           {newCollection.map((item) => {
             return (
-              <CollectionCard title={item.title} description={item.description} image={item.image} />
+              <CollectionCard
+                title={item.title}
+                description={item.description}
+                image={item.image}
+              />
             );
           })}
         </div>
