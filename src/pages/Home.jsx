@@ -4,42 +4,48 @@ import { newCollection } from "../datas/newCollectionData";
 import CategoryCard from "../components/CategoryCards";
 
 export default function Home() {
+  const handleClick = () => {};
 
-    const handleClick = ()=>{}
+  return (
+    <div className="container">
+      {/* CATEGORY CARDS */}
+      <div className="row gx-3 gy-3 mt-4 justify-content-between">
+        {categoriesData.map((category, index) => (
+          <div className="col-6 col-md-3 col-lg-2" key={index}>
+            <CategoryCard
+              image={category.imageUrl}
+              title={category.title}
+              onClick={handleClick}
+            />
+          </div>
+        ))}
+      </div>
 
-    return (
-      <div className="container">
-        <div className="d-flex gap-3 mt-4">
-          {categoriesData.map((category) => {
-            return (
-              <CategoryCard
-                image={category.imageUrl}
-                title={category.title}
-                onClick={handleClick}
-              />
-            );
-          })}
-        </div>
-
-        <div className="full-banner my-4">
-          <img
-            src="https://img.freepik.com/free-photo/portrait-young-handsome-bearded-man_1303-19639.jpg?semt=ais_incoming&w=740&q=80"
-            alt="Banner"
-            className="banner-img"
-          />
-        </div>
-
-        <div className="d-flex gap-5">
-          {newCollection.map((item) => {
-            return (
-              <CollectionCard
-                title={item.title}
-                description={item.description}
-                image={item.image}
-              />
-            );
-          })}
+      {/* FULL WIDTH RESPONSIVE BANNER */}
+      <div className="row my-4">
+        <div className="col-12">
+          <div className="full-banner">
+            <img
+              src="https://img.freepik.com/free-photo/portrait-young-handsome-bearded-man_1303-19639.jpg?semt=ais_incoming&w=740&q=80"
+              alt="Banner"
+              className="banner-img"
+            />
+          </div>
         </div>
       </div>
-    );
+
+      {/* COLLECTION CARDS  (Responsive) */}
+      <div className="row g-4 mb-5">
+        {newCollection.map((item, index) => (
+          <div className="col-12 col-md-6" key={index}>
+            <CollectionCard
+              title={item.title}
+              description={item.description}
+              image={item.image}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

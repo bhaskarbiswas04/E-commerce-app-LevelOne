@@ -1,8 +1,8 @@
 export default function CategoryCard ({ image, title, onClick }) {
       return (
-        <div className="category-card my-5" onClick={onClick}>
+        <div className="category-card mb-4" onClick={onClick}>
           <img src={image} alt={title} className="category-img" />
-          <div className="category-label">{title}</div>
+          <div className="category-label text-center">{title}</div>
         </div>
       );
     };
