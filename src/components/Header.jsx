@@ -22,23 +22,37 @@ export default function Header () {
           </div>
 
           {/* MENU OPTIONS */}
-          <div className="d-flex">
+          <div className="d-flex gap-3">
             <button
               type="button"
               className="btn btn-secondary px-4 my-2 rounded-0"
             >
               Login
             </button>
-            <ul className="navbar-nav">
+
+            <ul className="navbar-nav gap-3">
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                {/* <a className="nav-link" href="#">
                   <span className="fs-3">♡</span>
-                </a>
+                </a> */}
+                <button type="button" class="btn btn-light position-relative">
+                  ♡
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    0<span class="visually-hidden">unread messages</span>
+                  </span>
+                </button>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
+              <li className="nav-item ">
+                {/* <a className="nav-link" href="#">
                   <span className="fs-4">🛒</span> Cart
-                </a>
+                </a> */}
+
+                <button type="button" class="btn btn-light position-relative">
+                  <span className="fs-4">🛒</span> Cart
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    0<span class="visually-hidden">unread messages</span>
+                  </span>
+                </button>
               </li>
             </ul>
           </div>
