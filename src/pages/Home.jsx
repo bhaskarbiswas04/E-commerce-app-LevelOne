@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { categoriesData } from "../datas/categoryData";
 import CollectionCard from "../components/CollectionCards";
 import { newCollection } from "../datas/newCollectionData";
 import CategoryCard from "../components/CategoryCards";
 
 export default function Home() {
-  const handleClick = () => {};
+  const navigate = useNavigate();
+  const handleClick = (cTitle) => {
+    navigate(`/products/${cTitle}`);
+  };
 
   return (
     <div className="container">
@@ -15,7 +19,7 @@ export default function Home() {
             <CategoryCard
               image={category.imageUrl}
               title={category.title}
-              onClick={handleClick}
+              onClick={() => handleClick(category.title)}
             />
           </div>
         ))}
