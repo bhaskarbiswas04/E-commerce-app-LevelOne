@@ -103,3 +103,26 @@
     height: 200px;
   }
 }
+
+/* CSS for Slidebar in Filter section of productListing page. */
+/* Remove default Bootstrap gray track */
+input[type="range"].custom-range::-webkit-slider-runnable-track {
+  height: 6px;
+  background: transparent !important;
+}
+
+input[type="range"].custom-range::-moz-range-track {
+  height: 6px;
+  background: transparent !important;
+}
+
+/* Customize the thumb */
+input[type="range"].custom-range::-webkit-slider-thumb {
+  background: #0d6efd;
+}
+
+input[type="range"].custom-range::-moz-range-thumb {
+  background: #0d6efd;
+}
+
+/* End */
