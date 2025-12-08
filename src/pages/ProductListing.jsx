@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import FilterUIComponent from "../components/FilterUIComponent";
 import products from "../datas/products";
 import { useFilter } from "../context/FilterContext";
 
+
+
 export default function ProductListing() {
+  const navigate = useNavigate();
   const { filters } = useFilter();
 
   let filteredProducts = [...products];
@@ -29,6 +33,8 @@ export default function ProductListing() {
   const minRating = Number(filters.rating[0]); // "4 Stars..." → 4
 
   filteredProducts = filteredProducts.filter((p) => p.rating >= minRating);
+  {
+  }
 
   // -------------------------
   // 4️⃣ SORTING
@@ -51,7 +57,9 @@ export default function ProductListing() {
             {/* HEADER */}
             <div className="mb-4">
               <h4 className="fw-bold">
-                Showing Filtered Products
+                {filters.isFiltered
+                  ? "Showing Filtered Products"
+                  : "Showing All Products"}
                 <span className="fs-6 text-muted">
                   &nbsp; ( Showing {filteredProducts.length} products )
                 </span>
@@ -61,7 +69,12 @@ export default function ProductListing() {
             {/* PRODUCT GRID */}
             <div className="row g-4">
               {filteredProducts.map((item) => (
-                <div key={item.id} className="col-6 col-md-4 col-lg-3">
+                <div
+                  key={item.id}
+                  className="col-6 col-md-4 col-lg-3"
+                  onClick={() => navigate(`/product/${item.id}`)}
+                  style={{ cursor: "pointer" }}
+                >
                   <ProductCard product={item} />
                 </div>
               ))}

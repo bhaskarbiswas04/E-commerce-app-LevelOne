@@ -6,8 +6,9 @@ export function FilterProvider({ children }) {
   const [filters, setFilters] = useState({
     price: 3000,
     categories: [],
-    rating: "4 Stars & above",
+    rating: "1 Stars & above",
     sortBy: "low-to-high",
+    isFiltered: false,
   });
 
   return (

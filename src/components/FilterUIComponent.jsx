@@ -16,7 +16,7 @@ export default function FilterUIComponent() {
 
   // PRICE UPDATE
   const updatePrice = (value) => {
-    setFilters({ ...filters, price: Number(value) });
+    setFilters({ ...filters, price: Number(value), isFiltered: true });
   };
 
   // CATEGORY UPDATE
@@ -29,31 +29,32 @@ export default function FilterUIComponent() {
       updated = [...filters.categories, category];
     }
 
-    setFilters({ ...filters, categories: updated });
+    setFilters({ ...filters, categories: updated, isFiltered: true });
   };
 
   // RATING UPDATE
   const updateRating = (rating) => {
-    setFilters({ ...filters, rating });
+    setFilters({ ...filters, rating, isFiltered: true }); 
   };
 
   // SORT UPDATE
   const updateSort = (value) => {
-    setFilters({ ...filters, sortBy: value });
+    setFilters({ ...filters, sortBy: value, isFiltered: true });
   };
 
   // CLEAR FILTERS
   const clearFilters = () => {
     setFilters({
-      price: 1199,
+      price: 3000,
       categories: [],
-      rating: "4 Stars & above",
+      rating: "1 Stars & above",
       sortBy: "low-to-high",
+      isFiltered: false
     });
   };
 
   return (
-    <div className="p-3 border rounded bg-white" style={{ width: "280px", height: "100%" }}>
+    <div className="p-3 border rounded bg-white" style={{ minWidth: "280px", height: "100%" }}>
       {/* HEADER */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h5 className="m-0 fw-bold">Filters</h5>
