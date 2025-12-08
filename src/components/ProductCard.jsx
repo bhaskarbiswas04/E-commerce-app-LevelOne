@@ -41,7 +41,7 @@ export default function ProductCard({ product }) {
         </p>
 
         <p className="mb-2" style={{ fontSize: "15px" }}>
-          Rating: {product.rating}
+          Rating: {product.rating} || {product.category}
         </p>
 
         <button

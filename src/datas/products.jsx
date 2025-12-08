@@ -1,58 +1,66 @@
 export default [
   {
     id: 1,
-    name: "Men Premium Jacket",
-    price: 2000,
-    image: "https://m.media-amazon.com/images/I/71ty2O9lnPL._AC_UY1000_.jpg",
-    rating: 4.5
+    name: "Men Leather Jacket",
+    price: 1899,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpsbrJYRDavSLAuhg0m3s1x6bPM8ELLH_L6Q&s",
+    rating: 4.5,
+    category: "Men",
   },
   {
     id: 2,
-    name: "Men Premium Jacket",
-    price: 2000,
-    image: "https://m.media-amazon.com/images/I/71ty2O9lnPL._AC_UY1000_.jpg",
-    rating: 3.8
+    name: "Women Winter Coat",
+    price: 2499,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpsbrJYRDavSLAuhg0m3s1x6bPM8ELLH_L6Q&s",
+    rating: 3.8,
+    category: "Women",
   },
   {
     id: 3,
-    name: "Men Premium Jacket",
-    price: 2000,
-    image: "https://m.media-amazon.com/images/I/71ty2O9lnPL._AC_UY1000_.jpg",
-    rating: 4.5
+    name: "Kids Hoodie Sweatshirt",
+    price: 799,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpsbrJYRDavSLAuhg0m3s1x6bPM8ELLH_L6Q&s",
+    rating: 4.2,
+    category: "Kids",
   },
   {
     id: 4,
-    name: "Men Premium Jacket",
-    price: 2000,
-    image: "https://m.media-amazon.com/images/I/71ty2O9lnPL._AC_UY1000_.jpg",
-    rating: 4.5
+    name: "Smart Wireless Earbuds",
+    price: 1499,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpsbrJYRDavSLAuhg0m3s1x6bPM8ELLH_L6Q&s",
+    rating: 4.8,
+    category: "Electronics",
   },
   {
     id: 5,
-    name: "Men Premium Jacket",
-    price: 2000,
-    image: "https://m.media-amazon.com/images/I/71ty2O9lnPL._AC_UY1000_.jpg",
-    rating: 4.5
+    name: "Men Casual Sneakers",
+    price: 1299,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpsbrJYRDavSLAuhg0m3s1x6bPM8ELLH_L6Q&s",
+    rating: 3.5,
+    category: "Men",
   },
   {
     id: 6,
-    name: "Men Premium Jacket",
-    price: 2000,
-    image: "https://m.media-amazon.com/images/I/71ty2O9lnPL._AC_UY1000_.jpg",
-    rating: 4.5
+    name: "Women Handbag Leather",
+    price: 1799,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpsbrJYRDavSLAuhg0m3s1x6bPM8ELLH_L6Q&s",
+    rating: 4.0,
+    category: "Women",
   },
   {
     id: 7,
-    name: "Men Premium Jacket",
-    price: 2000,
-    image: "https://m.media-amazon.com/images/I/71ty2O9lnPL._AC_UY1000_.jpg",
-    rating: 4.5
+    name: "Kids Sports Shoes",
+    price: 999,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpsbrJYRDavSLAuhg0m3s1x6bPM8ELLH_L6Q&s",
+    rating: 3.9,
+    category: "Kids",
   },
   {
     id: 8,
-    name: "Men Premium Jacket",
-    price: 2000,
-    image: "https://m.media-amazon.com/images/I/71ty2O9lnPL._AC_UY1000_.jpg",
-    rating: 4.5
+    name: "Bluetooth Smartwatch",
+    price: 2199,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpsbrJYRDavSLAuhg0m3s1x6bPM8ELLH_L6Q&s",
+    rating: 4.6,
+    category: "Electronics",
   },
 ];
