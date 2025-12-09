@@ -12,33 +12,24 @@ export default function ProductListing() {
 
   let filteredProducts = [...products];
 
-  // -------------------------
-  // 1️⃣ PRICE FILTER
-  // -------------------------
+  // PRICE FILTER
   filteredProducts = filteredProducts.filter((p) => p.price <= filters.price);
 
-  // -------------------------
-  // 2️⃣ CATEGORY FILTER
-  // -------------------------
+  // CATEGORY FILTER
   if (filters.categories.length > 0) {
     filteredProducts = filteredProducts.filter((p) =>
       filters.categories.includes(p.category)
     );
   }
 
-  // -------------------------
-  // 3️⃣ RATING FILTER
-  // rating string like "4 Stars & above" → extract 4
-  // -------------------------
-  const minRating = Number(filters.rating[0]); // "4 Stars..." → 4
+  // RATING FILTER
+  const minRating = Number(filters.rating[0]);
 
   filteredProducts = filteredProducts.filter((p) => p.rating >= minRating);
   {
   }
 
-  // -------------------------
-  // 4️⃣ SORTING
-  // -------------------------
+  // SORTING
   if (filters.sortBy === "low-to-high") {
     filteredProducts.sort((a, b) => a.price - b.price);
   } else {
@@ -54,6 +45,7 @@ export default function ProductListing() {
         {/* PRODUCTS SECTION */}
         <div className="flex-grow-1 p-4" style={{ backgroundColor: "#eae1e1" }}>
           <div className="d-flex flex-column ">
+
             {/* HEADER */}
             <div className="mb-4">
               <h4 className="fw-bold">
@@ -72,7 +64,7 @@ export default function ProductListing() {
                 <div
                   key={item.id}
                   className="col-6 col-md-4 col-lg-3"
-                  onClick={() => navigate(`/product/${item.id}`)}
+                  onClick={() => navigate(`/products/${item.category}/${item.id}`)}
                   style={{ cursor: "pointer" }}
                 >
                   <ProductCard product={item} />
@@ -82,7 +74,7 @@ export default function ProductListing() {
               {/* If no products found */}
               {filteredProducts.length === 0 && (
                 <h5 className="text-center text-muted mt-5">
-                  No products match your filters 😥
+                  No products match your filters.
                 </h5>
               )}
             </div>
