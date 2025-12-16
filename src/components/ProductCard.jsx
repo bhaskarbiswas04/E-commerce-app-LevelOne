@@ -1,12 +1,14 @@
-import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useWishlist } from "../context/WishlistContext";
 
 export default function ProductCard({ product }) {
-  const [liked, setLiked] = useState(false);
+  const { toggleWishlist, isInWishlist } = useWishlist();
+
+  const liked = isInWishlist(product.id);
 
   return (
     <div
-      className="card shadow-sm border-0 p-3"
+      className="card shadow-sm border-0 p-3 h-100"
       style={{ borderRadius: "8px", maxHeight: "380px" }}
     >
       {/* IMAGE + WISHLIST ICON */}
@@ -21,10 +23,14 @@ export default function ProductCard({ product }) {
           }}
         />
 
+        {/* WISHLIST HEART */}
         <span
           className="position-absolute top-0 end-0 m-2 p-2 bg-white rounded-circle shadow"
-          style={{ cursor: "pointer" }}
-          onClick={() => setLiked(!liked)}
+          style={{ cursor: "pointer", zIndex: 10 }}
+          onClick={(e) => {
+            e.stopPropagation(); // 🔥 prevents card click navigation
+            toggleWishlist(product);
+          }}
         >
           {liked ? <FaHeart color="red" size={16} /> : <FaRegHeart size={16} />}
         </span>
@@ -36,12 +42,12 @@ export default function ProductCard({ product }) {
           {product.name}
         </h6>
 
-        <p className="fw-bold mb-2" style={{ fontSize: "15px" }}>
+        <p className="fw-bold mb-1" style={{ fontSize: "15px" }}>
           ₹{product.price}
         </p>
 
-        <p className="mb-2" style={{ fontSize: "15px" }}>
-          Rating: {product.rating} || {product.category}
+        <p className="mb-2 text-muted" style={{ fontSize: "13px" }}>
+          ⭐ {product.rating} · {product.category}
         </p>
 
         <button
