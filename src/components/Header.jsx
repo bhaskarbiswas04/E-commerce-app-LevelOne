@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
 
 export default function Header() {
-  const { wishlist } = useWishlist(); // ✅ get wishlist
+  const { wishlist } = useWishlist();
+  const { cart } = useCart();
+
+  // total cart quantity (important)
+  const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-secondary">
@@ -33,7 +38,7 @@ export default function Header() {
             Login
           </button>
 
-          <ul className="navbar-nav flex-row gap-3 align-items-center">
+          <ul className="navbar-nav flex-row gap-3 align-items-center mb-0">
             {/* WISHLIST */}
             <li className="nav-item">
               <Link to="/wishlist" className="nav-link p-0">
@@ -46,18 +51,26 @@ export default function Header() {
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       {wishlist.length < 1 ? "0" : wishlist.length}
                     </span>
+               
                 </button>
               </Link>
             </li>
 
-            {/* CART (placeholder for now) */}
+            {/* CART */}
             <li className="nav-item">
-              <button type="button" className="btn btn-light position-relative">
-                <span className="fs-4">🛒</span>
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  0
-                </span>
-              </button>
+              <Link to="/cart" className="nav-link p-0">
+                <button
+                  type="button"
+                  className="btn btn-light position-relative"
+                >
+                  <span className="fs-4">🛒</span>
+                  
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {cartCount < 1 ? "0" : cartCount}
+                    </span>
+                
+                </button>
+              </Link>
             </li>
           </ul>
         </div>

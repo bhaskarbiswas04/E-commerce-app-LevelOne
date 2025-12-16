@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
+import { useCart } from "../context/CartContext";
 import products from "../datas/products";
 import ProductCard from "../components/ProductCard";
 
 export default function ProductDetails() {
   const { category, id } = useParams();
+const { addToCart } = useCart();
   const navigate = useNavigate();
+
+  
 
   // find product
   const product = products.find(
@@ -42,7 +46,10 @@ export default function ProductDetails() {
   const handleBuyNow = () =>
     alert(`Buy Now: ${product.name} (x${qty}) ${selectedSize || ""}`);
 
-  const handleAddToCart = () => alert(`Added: ${product.name} (x${qty})`);
+  const handleAddToCart = () => {
+    addToCart(product, qty, selectedSize);
+    alert("Added to cart 🛒");
+  };
 
   // related products
   const related = products.filter(

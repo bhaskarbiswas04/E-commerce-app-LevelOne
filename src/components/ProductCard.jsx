@@ -1,8 +1,10 @@
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
 
 export default function ProductCard({ product }) {
   const { toggleWishlist, isInWishlist } = useWishlist();
+  const { addToCart } = useCart();
 
   const liked = isInWishlist(product.id);
 
@@ -28,7 +30,7 @@ export default function ProductCard({ product }) {
           className="position-absolute top-0 end-0 m-2 p-2 bg-white rounded-circle shadow"
           style={{ cursor: "pointer", zIndex: 10 }}
           onClick={(e) => {
-            e.stopPropagation(); // 🔥 prevents card click navigation
+            e.stopPropagation(); // prevent navigation
             toggleWishlist(product);
           }}
         >
@@ -53,6 +55,11 @@ export default function ProductCard({ product }) {
         <button
           className="btn btn-secondary w-100 py-1"
           style={{ fontSize: "14px" }}
+          onClick={(e) => {
+            e.stopPropagation();
+            addToCart(product);
+            alert("Item added to cart 🛒");
+          }}
         >
           Add to Cart
         </button>
