@@ -1,7 +1,8 @@
+import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
+
 import products from "../datas/products";
 import ProductCard from "../components/ProductCard";
 
@@ -9,8 +10,6 @@ export default function ProductDetails() {
   const { category, id } = useParams();
 const { addToCart } = useCart();
   const navigate = useNavigate();
-
-  
 
   // find product
   const product = products.find(
@@ -200,9 +199,7 @@ const { addToCart } = useCart();
         </div>
       </div>
 
-      {/* ==================== */}
       {/* RELATED PRODUCTS     */}
-      {/* ==================== */}
       <div className="mt-5">
         <h5>More items you may like in {product.category}</h5>
 

@@ -3,12 +3,32 @@ import ProductCard from "../components/ProductCard";
 import FilterUIComponent from "../components/FilterUIComponent";
 import products from "../datas/products";
 import { useFilter } from "../context/FilterContext";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 
 
 export default function ProductListing() {
+  const {category} = useParams();
   const navigate = useNavigate();
-  const { filters } = useFilter();
+  const { filters, setFilters } = useFilter();
+
+  //Filtering out if any category is clicked from category card in home screen.
+  useEffect(() => {
+    if(category) {
+      setFilters((prev) => ({
+        ...prev,
+        categories: [category],
+        isFiltered: true
+      }))
+    } else {
+      setFilters((prev) => ({
+        ...prev,
+        categories: [],
+        isFiltered: false,
+      }));
+    }
+  }, [category, setFilters])
 
   let filteredProducts = [...products];
 

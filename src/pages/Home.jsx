@@ -7,7 +7,11 @@ import CategoryCard from "../components/CategoryCards";
 export default function Home() {
   const navigate = useNavigate();
   const handleClick = (cTitle) => {
-    navigate(`/products/${cTitle}`);
+    if(cTitle === "All Products") {
+      navigate("/products")
+    } else {
+      navigate(`/products/${cTitle}`);
+    }
   };
 
   return (
