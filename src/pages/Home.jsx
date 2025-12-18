@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { categoriesData } from "../datas/categoryData";
-import CollectionCard from "../components/CollectionCards";
+import CollectionCard from "../components/home-comps/CollectionCards";
 import { newCollection } from "../datas/newCollectionData";
-import CategoryCard from "../components/CategoryCards";
+import CategoryCard from "../components/home-comps/CategoryCards";
 
 export default function Home() {
   const navigate = useNavigate();
