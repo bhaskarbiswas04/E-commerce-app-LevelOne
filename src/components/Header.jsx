@@ -31,12 +31,14 @@ export default function Header() {
 
         {/* MENU OPTIONS */}
         <div className="d-flex gap-3 align-items-center">
-          <button
-            type="button"
-            className="btn btn-secondary px-4 my-2 rounded-0"
-          >
-            Login
-          </button>
+          <Link to="/profile">
+            <button
+              type="button"
+              className="btn btn-secondary px-4 my-2 rounded-0"
+            >
+              User Profile
+            </button>
+          </Link>
 
           <ul className="navbar-nav flex-row gap-3 align-items-center mb-0">
             {/* WISHLIST */}
@@ -47,11 +49,9 @@ export default function Header() {
                   className="btn btn-light position-relative"
                 >
                   ♡
-                  
-                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {wishlist.length < 1 ? "0" : wishlist.length}
-                    </span>
-               
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {wishlist.length < 1 ? "0" : wishlist.length}
+                  </span>
                 </button>
               </Link>
             </li>
@@ -64,11 +64,10 @@ export default function Header() {
                   className="btn btn-light position-relative"
                 >
                   <span className="fs-4">🛒</span>
-                  
-                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {cartCount < 1 ? "0" : cartCount}
-                    </span>
-                
+
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {cartCount < 1 ? "0" : cartCount}
+                  </span>
                 </button>
               </Link>
             </li>

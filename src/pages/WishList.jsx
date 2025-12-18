@@ -1,8 +1,10 @@
 import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
 import { FaHeart } from "react-icons/fa";
 
 export default function Wishlist() {
   const { wishlist, toggleWishlist } = useWishlist();
+  const { addToCart } = useCart();
 
   return (
     <div className="container my-4">
@@ -65,7 +67,13 @@ export default function Wishlist() {
 
                 {/* BUTTON AT BOTTOM */}
                 <div className="mt-auto">
-                  <button className="btn btn-secondary w-100 py-1">
+                  <button
+                    className="btn btn-secondary w-100 py-1"
+                    onClick={() => {
+                      addToCart(item); // 1️⃣ add to cart
+                      toggleWishlist(item); // 2️⃣ remove from wishlist
+                    }}
+                  >
                     Move to Cart
                   </button>
                 </div>

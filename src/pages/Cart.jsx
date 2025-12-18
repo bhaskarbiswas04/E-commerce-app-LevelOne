@@ -7,8 +7,8 @@ export default function Cart() {
 
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-  const discount = 1000;
-  const deliveryCharge = cart.length > 0 ? 499 : 0;
+  const discount = 299;
+  const deliveryCharge = cart.length > 0 ? 99 : 0;
   const totalAmount = totalPrice - discount + deliveryCharge;
 
   return (
@@ -55,7 +55,7 @@ export default function Cart() {
                     -
                   </button>
 
-                  <span className="my-2">{item.qty}</span>
+                  <span className="mx-2">{item.qty}</span>
 
                   <button
                     className="btn btn-outline-secondary btn-sm"
@@ -75,7 +75,10 @@ export default function Cart() {
 
                     <button
                       className="btn btn-outline-secondary btn-sm"
-                      onClick={() => toggleWishlist(item)}
+                      onClick={() => {
+                        toggleWishlist(item); // 1️⃣ add to wishlist
+                        removeFromCart(item.id, item.size); // 2️⃣ remove from cart
+                      }}
                     >
                       Move to Wishlist
                     </button>
