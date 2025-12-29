@@ -21,7 +21,7 @@ export default function Home() {
     async function fetchCategories() {
       try {
         const res = await fetch(
-          "https://e-commerce-level-one-backend.vercel.app/api/categories"
+          "https://e-commerce-level-one-backend.vercel.app/categories"
         );
         const json = await res.json();
         setCategories(json.data.categories);

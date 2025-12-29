@@ -32,8 +32,8 @@ export default function ProductDetails() {
     async function fetchData() {
       try {
         const [productRes, allRes] = await Promise.all([
-          fetch(`https://e-commerce-level-one-backend.vercel.app/api/products/${id}`),
-          fetch(`https://e-commerce-level-one-backend.vercel.app/api/products`),
+          fetch(`https://e-commerce-level-one-backend.vercel.app/products/${id}`),
+          fetch(`https://e-commerce-level-one-backend.vercel.app/products`),
         ]);
 
         const productJson = await productRes.json();

@@ -17,7 +17,7 @@ export default function ProductListing() {
     async function fetchProducts() {
       try {
         const res = await fetch(
-          "https://e-commerce-level-one-backend.vercel.app/api/products"
+          "https://e-commerce-level-one-backend.vercel.app/products"
         );
         const json = await res.json();
         setProducts(json.data.products);
