@@ -54,7 +54,7 @@ export default function ProductDetails() {
   if (loading) {
     return (
       <div className="container my-5 text-center">
-        <h5>Loading products...</h5>
+        <h5>Loading products...</h5> 
       </div>
     );
   }
