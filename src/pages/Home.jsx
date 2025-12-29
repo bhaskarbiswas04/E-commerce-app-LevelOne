@@ -16,7 +16,7 @@ export default function Home() {
     }
   };
 
-  // 🔹 Fetch categories from backend
+  // Fetch categories from backend
   useEffect(() => {
     async function fetchCategories() {
       try {

@@ -12,7 +12,7 @@ export default function ProductListing() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 Fetch products from backend
+  // Fetch products from backend
   useEffect(() => {
     async function fetchProducts() {
       try {
