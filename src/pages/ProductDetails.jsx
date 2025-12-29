@@ -53,7 +53,7 @@ export default function ProductDetails() {
 
   if (loading) {
     return (
-      <div c+lassName="container my-5 text-center">
+      <div className="container my-5 text-center">
         <h5>Loading products...</h5>
       </div>
     );
