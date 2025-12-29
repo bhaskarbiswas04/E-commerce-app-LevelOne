@@ -1,31 +1,63 @@
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { toast } from "react-toastify";
+import { useWishlist } from "../context/WishlistContext";
 
-import products from "../datas/products";
+
 import ProductCard from "../components/ProductCard";
 
 export default function ProductDetails() {
   const { category, id } = useParams();
-const { addToCart } = useCart();
+  const { addToCart } = useCart();
   const navigate = useNavigate();
 
-  // find product
-  const product = products.find(
-    (p) =>
-      String(p.id) === String(id) &&
-      p.category.toLowerCase() === category.toLowerCase()
-  );
+  const [product, setProduct] = useState(null);
+  const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // HOOKS (must run always)
-  const [liked, setLiked] = useState(false);
+  // UI states
+  const { wishlist, toggleWishlist } = useWishlist();
+  const isWishlisted = wishlist.some((item) => item.id === product.id);
   const [qty, setQty] = useState(1);
   const [selectedSize, setSelectedSize] = useState(null);
 
   // category logic
   const isClothing = ["men", "women", "kids"].includes(category.toLowerCase());
   const sizes = ["S", "M", "L", "XL", "XXL"];
+
+  // 🔹 Fetch product + all products
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [productRes, allRes] = await Promise.all([
+          fetch(`https://e-commerce-level-one-backend.vercel.app/api/products/${id}`),
+          fetch(`https://e-commerce-level-one-backend.vercel.app/api/products`),
+        ]);
+
+        const productJson = await productRes.json();
+        const allJson = await allRes.json();
+
+        setProduct(productJson.data.product);
+        setAllProducts(allJson.data.products);
+      } catch (error) {
+        console.error("Failed to fetch product details", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="container my-5 text-center">
+        <h5>Loading product...</h5>
+      </div>
+    );
+  }
 
   // product not found
   if (!product) {
@@ -37,32 +69,31 @@ const { addToCart } = useCart();
     );
   }
 
-  // quantity
-  const increment = () => setQty(qty + 1);
-  const decrement = () => qty > 1 && setQty(qty - 1);
+  // quantity handlers
+  const increment = () => setQty((q) => q + 1);
+  const decrement = () => qty > 1 && setQty((q) => q - 1);
 
   // buttons
-  const handleBuyNow = () =>
-    alert(`Buy Now: ${product.name} (x${qty}) ${selectedSize || ""}`);
+  const handleBuyNow = () => {
+    toast.info(`Buying ${product.name} (x${qty})`);
+  };
 
   const handleAddToCart = () => {
     addToCart(product, qty, selectedSize);
-    alert("Added to cart 🛒");
+    toast.success("Added to cart 🛒");
   };
 
-  // related products
-  const related = products.filter(
+  // related products (same category)
+  const related = allProducts.filter(
     (p) => p.category === product.category && p.id !== product.id
   );
 
   return (
     <div className="container my-4">
-      {/* ================= */}
       {/* MAIN PRODUCT AREA */}
-      {/* ================= */}
       <div className="row g-4">
         {/* LEFT — IMAGE & BUTTONS */}
-        <div className="col-md-4">
+        <div className="col-md-3">
           <div className="position-relative">
             <img
               src={product.image}
@@ -73,9 +104,16 @@ const { addToCart } = useCart();
             <span
               className="position-absolute top-0 end-0 m-3 p-2 bg-white rounded-circle shadow"
               style={{ cursor: "pointer" }}
-              onClick={() => setLiked(!liked)}
+              onClick={() => {
+                toggleWishlist(product);
+                toast.info(
+                  isWishlisted
+                    ? "Removed from wishlist"
+                    : "Added to wishlist ❤️"
+                );
+              }}
             >
-              {liked ? <FaHeart color="red" /> : <FaRegHeart />}
+              {isWishlisted ? <FaHeart color="red" /> : <FaRegHeart />}
             </span>
           </div>
 
@@ -138,7 +176,7 @@ const { addToCart } = useCart();
               </div>
             </div>
 
-            {/* Size only for clothing */}
+            {/* Size */}
             {isClothing && (
               <div>
                 <small>Size:</small>
@@ -163,28 +201,6 @@ const { addToCart } = useCart();
 
           <hr />
 
-          {/* Icons Row */}
-          <div className="row text-center mb-3">
-            {[
-              ["10 days", "Returnable"],
-              ["Pay on", "Delivery"],
-              ["Free", "Delivery"],
-              ["Secure", "Payment"],
-            ].map(([line1, line2], idx) => (
-              <div className="col-3" key={idx}>
-                <div
-                  className="rounded-circle bg-light mb-1"
-                  style={{ width: 56, height: 56 }}
-                ></div>
-                <small className="text-muted">
-                  {line1} <br /> {line2}
-                </small>
-              </div>
-            ))}
-          </div>
-
-          <hr />
-
           {/* Description */}
           <h6>Description:</h6>
           <p>
@@ -199,7 +215,7 @@ const { addToCart } = useCart();
         </div>
       </div>
 
-      {/* RELATED PRODUCTS     */}
+      {/* RELATED PRODUCTS */}
       <div className="mt-5">
         <h5>More items you may like in {product.category}</h5>
 
