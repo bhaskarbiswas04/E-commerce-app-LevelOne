@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { useWishlist } from "../context/WishlistContext";
 import { useCart } from "../context/CartContext";
+import { useFilter } from "../context/FilterContext";
+import { FaUser, FaHeart, FaShoppingCart } from "react-icons/fa";
 
 export default function Header() {
   const { wishlist } = useWishlist();
   const { cart } = useCart();
+  const { filters, setFilters} = useFilter();
 
   // total cart quantity (important)
   const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
@@ -23,56 +26,66 @@ export default function Header() {
             <input
               className="form-control"
               type="search"
-              placeholder="Search"
-              aria-label="Search"
+              placeholder="Search products..."
+              value={filters.search}
+              onChange={(e) =>
+                setFilters((prev) => ({
+                  ...prev,
+                  search: e.target.value,
+                  isFiltered: e.target.value.length > 0,
+                }))
+              }
             />
           </form>
         </div>
 
         {/* MENU OPTIONS */}
-        <div className="d-flex gap-3 align-items-center">
-          <Link to="/profile">
-            <button
-              type="button"
-              className="btn btn-secondary px-4 my-2 rounded-0"
-            >
-              User Profile
-            </button>
-          </Link>
+        <ul className="navbar-nav flex-row gap-3 align-items-center mb-0">
+          {/* USER PROFILE */}
+          <li className="nav-item">
+            <Link to="/profile" className="nav-link p-0">
+              <button
+                type="button"
+                className="btn btn-light d-flex align-items-center justify-content-center"
+                style={{ width: "44px", height: "44px" }}
+              >
+                <FaUser size={18} color="grey" />
+              </button>
+            </Link>
+          </li>
 
-          <ul className="navbar-nav flex-row gap-3 align-items-center mb-0">
-            {/* WISHLIST */}
-            <li className="nav-item">
-              <Link to="/wishlist" className="nav-link p-0">
-                <button
-                  type="button"
-                  className="btn btn-light position-relative"
-                >
-                  ♡
-                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    {wishlist.length < 1 ? "0" : wishlist.length}
-                  </span>
-                </button>
-              </Link>
-            </li>
+          {/* WISHLIST */}
+          <li className="nav-item">
+            <Link to="/wishlist" className="nav-link p-0">
+              <button
+                type="button"
+                className="btn btn-light position-relative d-flex align-items-center justify-content-center"
+                style={{ width: "44px", height: "44px" }}
+              >
+                <FaHeart size={18} color="grey" />
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {wishlist.length}
+                </span>
+              </button>
+            </Link>
+          </li>
 
-            {/* CART */}
-            <li className="nav-item">
-              <Link to="/cart" className="nav-link p-0">
-                <button
-                  type="button"
-                  className="btn btn-light position-relative"
-                >
-                  <span className="fs-4">🛒</span>
-
-                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    {cartCount < 1 ? "0" : cartCount}
-                  </span>
-                </button>
-              </Link>
-            </li>
-          </ul>
-        </div>
+          {/* CART */}
+          <li className="nav-item">
+            <Link to="/cart" className="nav-link p-0">
+              <button
+                type="button"
+                className="btn btn-light position-relative d-flex align-items-center justify-content-center"
+                style={{ width: "44px", height: "44px" }}
+              >
+                <FaShoppingCart size={18} color="grey" />
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {cartCount}
+                </span>
+              </button>
+            </Link>
+          </li>
+        </ul>
       </div>
     </nav>
   );

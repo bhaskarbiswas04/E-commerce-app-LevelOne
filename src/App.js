@@ -26,32 +26,40 @@ function App() {
       <FilterProvider>
         <WishlistProvider>
           <AddressProvider>
+            <CartProvider>
+              <Router>
+                {/* 🔥 FLEX LAYOUT WRAPPER */}
+                <div className="d-flex flex-column min-vh-100">
+                  <Header />
 
-          <CartProvider>
-            <Router>
-              <Header />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/products" element={<ProductListing />} />
-                <Route
-                  path="/products/:category"
-                  element={<ProductListing />}
-                />
-                <Route
-                  path="/products/:category/:id"
-                  element={<ProductDetails />}
-                />
-                <Route path="/wishlist" element={<Wishlist />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/profile" element={<Profile />} />
-              </Routes>
-              <Footer />
-            </Router>
-          </CartProvider>
+                  {/* MAIN CONTENT */}
+                  <main className="flex-grow-1">
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/products" element={<ProductListing />} />
+                      <Route
+                        path="/products/:category"
+                        element={<ProductListing />}
+                      />
+                      <Route
+                        path="/products/:category/:id"
+                        element={<ProductDetails />}
+                      />
+                      <Route path="/wishlist" element={<Wishlist />} />
+                      <Route path="/cart" element={<Cart />} />
+                      <Route path="/profile" element={<Profile />} />
+                    </Routes>
+                  </main>
+
+                  <Footer />
+                </div>
+              </Router>
+            </CartProvider>
           </AddressProvider>
         </WishlistProvider>
       </FilterProvider>
 
+      {/* TOASTS */}
       <ToastContainer
         position="bottom-right"
         autoClose={2000}

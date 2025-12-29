@@ -49,6 +49,7 @@ export default function FilterUIComponent() {
       categories: [],
       rating: "1 Stars & above",
       sortBy: "low-to-high",
+      search: "",
       isFiltered: false
     });
   };

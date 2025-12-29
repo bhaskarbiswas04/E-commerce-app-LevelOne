@@ -73,6 +73,13 @@ export default function ProductListing() {
     filteredProducts.sort((a, b) => b.price - a.price);
   }
 
+  // SEARCH (Header) FILTER
+  if (filters.search.trim() !== "") {
+    filteredProducts = filteredProducts.filter((p) =>
+      p.name.toLowerCase().includes(filters.search.toLowerCase())
+    );
+  }
+
   return (
     <div className="d-flex w-100 mt-3 gap-3">
       {/* FILTER UI */}

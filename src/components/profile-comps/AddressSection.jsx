@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAddress } from "../../context/AddressContext";
-import AddressForm from "../AddressForm";
+import AddressForm from "./AddressForm";
 
 export default function AddressSection() {
   const {
