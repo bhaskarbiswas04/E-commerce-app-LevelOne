@@ -1,7 +1,6 @@
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useWishlist } from "../context/WishlistContext";
-import { useCart } from "../context/CartContext";
-import { toast } from "react-toastify";
+import { useCart } from "../context/CartContext"; 
 
 export default function ProductCard({ product }) {
   const { toggleWishlist, isInWishlist } = useWishlist();
@@ -33,10 +32,6 @@ export default function ProductCard({ product }) {
           onClick={(e) => {
             e.stopPropagation();
             toggleWishlist(product);
-
-            liked
-              ? toast.info("Removed from wishlist")
-              : toast.success("Added to wishlist");
           }}
         >
           {liked ? <FaHeart color="red" size={16} /> : <FaRegHeart size={16} />}
@@ -64,7 +59,7 @@ export default function ProductCard({ product }) {
           onClick={(e) => {
             e.stopPropagation();
             addToCart(product);
-            toast.success("Item added to cart 🛒");
+
           }}
         >
           Add to Cart

@@ -1,37 +1,47 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const CartContext = createContext();
 
-export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+export const CartProvider = ({ children }) => {
+  // ✅ load from localStorage
+  const [cart, setCart] = useState(() => {
+    const stored = localStorage.getItem("cart");
+    return stored ? JSON.parse(stored) : [];
+  });
 
-  // ADD TO CART
-  const addToCart = (product, qty = 1, size = null) => {
+  // ✅ persist cart
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const addToCart = (product) => {
     setCart((prev) => {
       const existing = prev.find(
-        (item) => item.id === product.id && item.size === size
+        (item) => item.id === product.id && item.size === product.size
       );
 
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id && item.size === size
-            ? { ...item, qty: item.qty + qty }
+          item.id === product.id && item.size === product.size
+            ? { ...item, qty: item.qty + 1 }
             : item
         );
       }
 
-      return [...prev, { ...product, qty, size }];
+      return [...prev, { ...product, qty: 1 }];
     });
+
+    toast.success("Item added to cart 🛒");
   };
 
-  // REMOVE FROM CART
-  const removeFromCart = (id, size = null) => {
+  const removeFromCart = (id, size) => {
     setCart((prev) =>
       prev.filter((item) => !(item.id === id && item.size === size))
     );
+    toast.info("Removed from cart");
   };
 
-  // UPDATE QTY
   const updateQty = (id, size, delta) => {
     setCart((prev) =>
       prev.map((item) =>
@@ -49,8 +59,6 @@ export function CartProvider({ children }) {
       {children}
     </CartContext.Provider>
   );
-}
+};
 
-export function useCart() {
-  return useContext(CartContext);
-}
+export const useCart = () => useContext(CartContext);

@@ -1,28 +1,18 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { useUser } from "../../context/UserContext";
 
 export default function ProfileDetails() {
+  const { user, updateUser } = useUser();
   const [isEditing, setIsEditing] = useState(false);
-  const [profile, setProfile] = useState(() => {
-    const saved = localStorage.getItem("userProfile");
-    return saved
-      ? JSON.parse(saved)
-      : {
-          name: "Abhinav Dutta",
-          email: "abhinav@gmail.com",
-          phone: "9876545476",
-        };
-  });
+  const [formData, setFormData] = useState(user);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProfile((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const saveProfile = () => {
-    localStorage.setItem("userProfile", JSON.stringify(profile));
+    updateUser(formData);
     setIsEditing(false);
-    toast.success("Profile updated");
   };
 
   return (
@@ -30,6 +20,7 @@ export default function ProfileDetails() {
       <h2 className="accordion-header">
         <button
           className="accordion-button"
+          type="button"
           data-bs-toggle="collapse"
           data-bs-target="#profileDetails"
         >
@@ -39,38 +30,26 @@ export default function ProfileDetails() {
 
       <div id="profileDetails" className="accordion-collapse collapse show">
         <div className="accordion-body">
-          {!isEditing ? (
+          {isEditing ? (
             <>
-              <p>
-                <strong>Name:</strong> {profile.name}
-              </p>
-              <p>
-                <strong>Email:</strong> {profile.email}
-              </p>
-              <p>
-                <strong>Phone:</strong> {profile.phone}
-              </p>
-
-              <button
-                className="btn btn-outline-secondary btn-sm"
-                onClick={() => setIsEditing(true)}
-              >
-                Edit Profile
-              </button>
-            </>
-          ) : (
-            <>
-              {["name", "email", "phone"].map((field) => (
-                <div className="mb-2" key={field}>
-                  <label className="form-label text-capitalize">{field}</label>
-                  <input
-                    className="form-control"
-                    name={field}
-                    value={profile[field]}
-                    onChange={handleChange}
-                  />
-                </div>
-              ))}
+              <input
+                className="form-control mb-2"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+              <input
+                className="form-control mb-2"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+              <input
+                className="form-control mb-3"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+              />
 
               <button
                 className="btn btn-primary btn-sm me-2"
@@ -83,6 +62,25 @@ export default function ProfileDetails() {
                 onClick={() => setIsEditing(false)}
               >
                 Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <p>
+                <strong>Name:</strong> {user.name}
+              </p>
+              <p>
+                <strong>Email:</strong> {user.email}
+              </p>
+              <p>
+                <strong>Phone:</strong> {user.phone}
+              </p>
+
+              <button
+                className="btn btn-outline-secondary btn-sm"
+                onClick={() => setIsEditing(true)}
+              >
+                Edit Profile
               </button>
             </>
           )}

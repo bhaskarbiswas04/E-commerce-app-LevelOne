@@ -5,7 +5,7 @@ import AddressSection from "../components/profile-comps/AddressSection";
 export default function Profile() {
   return (
     <div className="container my-4" style={{ maxWidth: "720px" }}>
-      <ProfileHeader />
+      <ProfileHeader />              
       <div className="accordion" id="profileAccordion">
         <ProfileDetails />
         <AddressSection />

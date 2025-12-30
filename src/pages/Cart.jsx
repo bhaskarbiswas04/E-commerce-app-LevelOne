@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 
 export default function Cart() {
+  const navigate = useNavigate();
   const { cart, removeFromCart, updateQty } = useCart();
   const { toggleWishlist } = useWishlist();
 
@@ -90,39 +92,46 @@ export default function Cart() {
         </div>
 
         {/* RIGHT: PRICE DETAILS */}
-        <div className="col-12 col-md-4">
-          <div className="card p-3 shadow-sm border-0">
-            <h6 className="fw-bold mb-3">PRICE DETAILS</h6>
+        {cart.length > 0 && (
+          <div className="col-12 col-md-4">
+            <div className="card p-3 shadow-sm border-0">
+              <h6 className="fw-bold mb-3">PRICE DETAILS</h6>
 
-            <div className="d-flex justify-content-between mb-2">
-              <span>Price ({cart.length} item)</span>
-              <span>₹{totalPrice}</span>
+              <div className="d-flex justify-content-between mb-2">
+                <span>Price ({cart.length} item)</span>
+                <span>₹{totalPrice}</span>
+              </div>
+
+              <div className="d-flex justify-content-between mb-2">
+                <span>Discount</span>
+                <span className="text-success">-₹{discount}</span>
+              </div>
+
+              <div className="d-flex justify-content-between mb-2">
+                <span>Delivery Charges</span>
+                <span>₹{deliveryCharge}</span>
+              </div>
+
+              <hr />
+
+              <div className="d-flex justify-content-between fw-bold mb-3">
+                <span>TOTAL AMOUNT</span>
+                <span>₹{totalAmount}</span>
+              </div>
+
+              <p className="text-success small">
+                You will save ₹{discount} on this order
+              </p>
+
+              <button
+                className="btn btn-primary w-100 mt-2"
+                onClick={() => navigate("/checkout")}
+              >
+                PLACE ORDER
+              </button>
             </div>
-
-            <div className="d-flex justify-content-between mb-2">
-              <span>Discount</span>
-              <span className="text-success">-₹{discount}</span>
-            </div>
-
-            <div className="d-flex justify-content-between mb-2">
-              <span>Delivery Charges</span>
-              <span>₹{deliveryCharge}</span>
-            </div>
-
-            <hr />
-
-            <div className="d-flex justify-content-between fw-bold mb-3">
-              <span>TOTAL AMOUNT</span>
-              <span>₹{totalAmount}</span>
-            </div>
-
-            <p className="text-success small">
-              You will save ₹{discount} on this order
-            </p>
-
-            <button className="btn btn-primary w-100 mt-2">PLACE ORDER</button>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import { FilterProvider } from "./context/FilterContext";
 import { WishlistProvider } from "./context/WishlistContext";
 import { CartProvider } from "./context/CartContext";
 import { AddressProvider } from "./context/AddressContext";
+import { UserProvider } from "./context/UserContext";
 
 import Home from "./pages/Home";
 import Header from "./components/Header";
@@ -19,16 +20,18 @@ import ProductDetails from "./pages/ProductDetails";
 import Wishlist from "./pages/WishList";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
     <>
+    <UserProvider>
       <FilterProvider>
         <WishlistProvider>
           <AddressProvider>
             <CartProvider>
               <Router>
-                {/* 🔥 FLEX LAYOUT WRAPPER */}
+                {/* FLEX LAYOUT WRAPPER */}
                 <div className="d-flex flex-column min-vh-100">
                   <Header />
 
@@ -48,6 +51,7 @@ function App() {
                       <Route path="/wishlist" element={<Wishlist />} />
                       <Route path="/cart" element={<Cart />} />
                       <Route path="/profile" element={<Profile />} />
+                      <Route path="/checkout" element={<Checkout />} />
                     </Routes>
                   </main>
 
@@ -58,6 +62,7 @@ function App() {
           </AddressProvider>
         </WishlistProvider>
       </FilterProvider>
+    </UserProvider>
 
       {/* TOASTS */}
       <ToastContainer
