@@ -9,8 +9,8 @@ export const UserProvider = ({ children }) => {
     return stored
       ? JSON.parse(stored)
       : {
-          name: "Abhinav Dutta",
-          email: "abhinav@gmail.com",
+          name: "Rounak Sharma",
+          email: "rounak53@gmail.com",
           phone: "9876545476",
         };
   });

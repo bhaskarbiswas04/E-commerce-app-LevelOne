@@ -1,15 +1,38 @@
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAddress } from "../context/AddressContext";
+import { useOrder } from "../context/OrderContext";
 
 export default function Checkout() {
-  const { cart } = useCart();
+  const navigate = useNavigate();
+
+  const { cart, clearCart } = useCart();
   const { addresses, selectedAddressId, selectAddress } = useAddress();
+  const { placeOrder } = useOrder();
 
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const discount = 299;
   const deliveryCharge = cart.length > 0 ? 99 : 0;
   const totalAmount = totalPrice - discount + deliveryCharge;
+
+  // 🔥 NEW: handle order confirm
+  const handleConfirmOrder = () => {
+    const selectedAddress = addresses.find(
+      (addr) => addr.id === selectedAddressId
+    );
+
+    if (!selectedAddress) return;
+
+    placeOrder({
+      cart,
+      address: selectedAddress,
+      totalAmount,
+    });
+
+    clearCart(); // 🧹 empty cart
+    navigate("/profile"); // ➜ go to profile (order history)
+  };
 
   return (
     <div className="container my-4">
@@ -96,7 +119,7 @@ export default function Checkout() {
             <button
               className="btn btn-success w-100"
               disabled={!selectedAddressId}
-              onClick={() => alert("Order placed successfully. Delivery within 5-7 days at your doorstep.")}
+              onClick={handleConfirmOrder}
             >
               CONFIRM ORDER
             </button>

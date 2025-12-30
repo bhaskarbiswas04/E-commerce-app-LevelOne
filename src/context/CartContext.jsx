@@ -52,9 +52,14 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  // Clear the cart after order has been placed.
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQty }}
+      value={{ cart, addToCart, removeFromCart, updateQty, clearCart }}
     >
       {children}
     </CartContext.Provider>

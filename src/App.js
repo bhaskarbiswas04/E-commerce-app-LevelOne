@@ -11,6 +11,7 @@ import { WishlistProvider } from "./context/WishlistContext";
 import { CartProvider } from "./context/CartContext";
 import { AddressProvider } from "./context/AddressContext";
 import { UserProvider } from "./context/UserContext";
+import { OrderProvider } from "./context/OrderContext";
 
 import Home from "./pages/Home";
 import Header from "./components/Header";
@@ -25,6 +26,8 @@ import Checkout from "./pages/Checkout";
 function App() {
   return (
     <>
+    <OrderProvider>
+
     <UserProvider>
       <FilterProvider>
         <WishlistProvider>
@@ -63,6 +66,7 @@ function App() {
         </WishlistProvider>
       </FilterProvider>
     </UserProvider>
+    </OrderProvider>
 
       {/* TOASTS */}
       <ToastContainer
