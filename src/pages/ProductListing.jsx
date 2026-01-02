@@ -79,44 +79,78 @@ export default function ProductListing() {
       p.name.toLowerCase().includes(filters.search.toLowerCase())
     );
   }
-
-  return (
-    <div className="d-flex w-100 mt-3 gap-3">
-      {/* FILTER UI */}
-      <FilterUIComponent />
-
-      {/* PRODUCTS */}
-      <div className="flex-grow-1 p-4" style={{ backgroundColor: "#eae1e1" }}>
-        <div className="mb-4">
-          <h4 className="fw-bold">
-            {filters.isFiltered
-              ? "Showing Filtered Products"
-              : "Showing All Products"}
-            <span className="fs-6 text-muted">
-              &nbsp; ( Showing {filteredProducts.length} products )
-            </span>
-          </h4>
-        </div>
-
-        <div className="row g-4">
-          {filteredProducts.map((item) => (
-            <div
-              key={item.id}
-              className="col-6 col-md-4 col-lg-3"
-              onClick={() => navigate(`/products/${item.category}/${item.id}`)}
-              style={{ cursor: "pointer" }}
+    return (
+      <div className="container-fluid mt-3">
+        <div className="row gx-4">
+          {/* ===== MOBILE FILTER BUTTON ===== */}
+          <div className="d-lg-none mb-3">
+            <button
+              className="btn btn-outline-secondary w-100"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#mobileFilter"
             >
-              <ProductCard product={item} />
-            </div>
-          ))}
+              ☰ Filters
+            </button>
+          </div>
 
-          {filteredProducts.length === 0 && (
-            <h5 className="text-center text-muted mt-5">
-              No products match your filters.
-            </h5>
-          )}
+          {/* ===== DESKTOP FILTER ===== */}
+          <div className="d-none d-lg-block col-lg-3 col-xl-2">
+            <FilterUIComponent />
+          </div>
+
+          {/* ===== MOBILE FILTER OFFCANVAS ===== */}
+          <div
+            className="offcanvas offcanvas-start"
+            tabIndex="-1"
+            id="mobileFilter"
+          >
+            <div className="offcanvas-header">
+              <h5 className="offcanvas-title">Filters</h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="offcanvas"
+              />
+            </div>
+
+            <div className="offcanvas-body">
+              <FilterUIComponent />
+            </div>
+          </div>
+
+          {/* ===== PRODUCTS ===== */}
+          <div className="col-12 col-lg-9 col-xl-10">
+            <div className="mx-4 p-md-4" style={{ backgroundColor: "#eae1e1" }}>
+              {/* HEADER */}
+              <div className="mb-4">
+                <h4 className="fw-bold">
+                  {filters.isFiltered
+                    ? "Showing Filtered Products"
+                    : "Showing All Products"}
+                  <span className="fs-6 text-muted">
+                    &nbsp;( Showing {filteredProducts.length} products )
+                  </span>
+                </h4>
+              </div>
+
+              {/* GRID */}
+              <div className="row g-3 g-md-4">
+                {filteredProducts.map((item) => (
+                  <div
+                    key={item.id}
+                    className="col-6 col-md-4 col-lg-3 col-xl-3"
+                    onClick={() =>
+                      navigate(`/products/${item.category}/${item.id}`)
+                    }
+                    style={{ cursor: "pointer" }}
+                  >
+                    <ProductCard product={item} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
 }

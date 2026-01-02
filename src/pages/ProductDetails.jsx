@@ -73,11 +73,6 @@ export default function ProductDetails() {
   const increment = () => setQty((q) => q + 1);
   const decrement = () => qty > 1 && setQty((q) => q - 1);
 
-  // buttons
-  const handleBuyNow = () => {
-    toast.info(`Buying ${product.name} (x${qty})`);
-  };
-
   const handleAddToCart = () => {
     addToCart(product, qty, selectedSize);
     toast.success("Added to cart 🛒");
@@ -118,9 +113,6 @@ export default function ProductDetails() {
           </div>
 
           <div className="d-grid mt-3">
-            <button className="btn btn-primary mb-2" onClick={handleBuyNow}>
-              Buy Now
-            </button>
             <button className="btn btn-secondary" onClick={handleAddToCart}>
               Add to Cart
             </button>
@@ -179,8 +171,8 @@ export default function ProductDetails() {
             {/* Size */}
             {isClothing && (
               <div>
-                <small>Size:</small>
                 <div className="d-flex flex-wrap gap-2 mt-1">
+                  <small>Size:</small>
                   {sizes.map((s) => (
                     <button
                       key={s}

@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <div className="container">
       {/*  CATEGORY SECTION  */}
-      <div className="row gx-3 gy-3 mt-4 justify-content-between">
+      <div className="row gx-3 gy-3 mt-4 justify-content-center justify-content-md-between">
         {loading &&
           Array.from({ length: 5 }).map((_, index) => (
             <div className="col-6 col-md-3 col-lg-2" key={index}>
@@ -99,7 +99,7 @@ export default function Home() {
 
       {/*  COLLECTIONS  */}
       {!loading && !error && (
-        <div className="row g-4 mb-5">
+        <div className="row g-4">
           {newCollection.map((item, index) => (
             <div className="col-12 col-md-6" key={index}>
               <CollectionCard
