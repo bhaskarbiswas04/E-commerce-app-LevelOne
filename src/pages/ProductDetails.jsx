@@ -19,7 +19,7 @@ export default function ProductDetails() {
 
   // UI states
   const { wishlist, toggleWishlist } = useWishlist();
-  const isWishlisted = wishlist.some((item) => item.id === product.id);
+  const isWishlisted = product ? wishlist.some((item) => item.id === product.id) : false;
   const [qty, setQty] = useState(1);
   const [selectedSize, setSelectedSize] = useState(null);
 
@@ -75,7 +75,6 @@ export default function ProductDetails() {
 
   const handleAddToCart = () => {
     addToCart(product, qty, selectedSize);
-    toast.success("Added to cart 🛒");
   };
 
   // related products (same category)
@@ -101,11 +100,6 @@ export default function ProductDetails() {
               style={{ cursor: "pointer" }}
               onClick={() => {
                 toggleWishlist(product);
-                toast.info(
-                  isWishlisted
-                    ? "Removed from wishlist"
-                    : "Added to wishlist ❤️"
-                );
               }}
             >
               {isWishlisted ? <FaHeart color="red" /> : <FaRegHeart />}

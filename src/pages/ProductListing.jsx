@@ -30,7 +30,6 @@ export default function ProductListing() {
 
     fetchProducts();
   }, []);
-
   // 🔹 Sync category filter from URL
   useEffect(() => {
     if (category) {
@@ -81,7 +80,7 @@ export default function ProductListing() {
   }
     return (
       <div className="container-fluid mt-3">
-        <div className="row gx-4">
+        <div className="row gx-5 gx-xl-6">
           {/* ===== MOBILE FILTER BUTTON ===== */}
           <div className="d-lg-none mb-3">
             <button
@@ -134,20 +133,31 @@ export default function ProductListing() {
               </div>
 
               {/* GRID */}
-              <div className="row g-3 g-md-4">
-                {filteredProducts.map((item) => (
-                  <div
-                    key={item.id}
-                    className="col-6 col-md-4 col-lg-3 col-xl-3"
-                    onClick={() =>
-                      navigate(`/products/${item.category}/${item.id}`)
-                    }
-                    style={{ cursor: "pointer" }}
-                  >
-                    <ProductCard product={item} />
-                  </div>
-                ))}
-              </div>
+              {filteredProducts.length === 0 ? (
+                <div className="text-center py-5">
+                  <h5 className="fw-semibold text-muted">
+                    No products found 😕
+                  </h5>
+                  <p className="text-muted mb-0">
+                    Try adjusting filters or search keywords
+                  </p>
+                </div>
+              ) : (
+                <div className="row g-3 g-md-4">
+                  {filteredProducts.map((item) => (
+                    <div
+                      key={item.id}
+                      className="col-6 col-md-4 col-lg-3 col-xl-3"
+                      onClick={() =>
+                        navigate(`/products/${item.category}/${item.id}`)
+                      }
+                      style={{ cursor: "pointer" }}
+                    >
+                      <ProductCard product={item} />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>

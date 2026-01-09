@@ -6,12 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "react-toastify/dist/ReactToastify.css";
 
-import { FilterProvider } from "./context/FilterContext";
-import { WishlistProvider } from "./context/WishlistContext";
-import { CartProvider } from "./context/CartContext";
-import { AddressProvider } from "./context/AddressContext";
-import { UserProvider } from "./context/UserContext";
-import { OrderProvider } from "./context/OrderContext";
+
 
 import Home from "./pages/Home";
 import Header from "./components/Header";
@@ -22,52 +17,41 @@ import Wishlist from "./pages/WishList";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/Checkout";
+import ProviderWrapper from "./components/test-wrapper";
 
 function App() {
   return (
     <>
-    <OrderProvider>
+      <ProviderWrapper>
+        <Router>
+          {/* FLEX LAYOUT WRAPPER */}
+          <div className="d-flex flex-column min-vh-100">
+            <Header />
 
-    <UserProvider>
-      <FilterProvider>
-        <WishlistProvider>
-          <AddressProvider>
-            <CartProvider>
-              <Router>
-                {/* FLEX LAYOUT WRAPPER */}
-                <div className="d-flex flex-column min-vh-100">
-                  <Header />
+            {/* MAIN CONTENT */}
+            <main className="flex-grow-1">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<ProductListing />} />
+                <Route
+                  path="/products/:category"
+                  element={<ProductListing />}
+                />
+                <Route
+                  path="/products/:category/:id"
+                  element={<ProductDetails />}
+                />
+                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/checkout" element={<Checkout />} />
+              </Routes>
+            </main>
 
-                  {/* MAIN CONTENT */}
-                  <main className="flex-grow-1">
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/products" element={<ProductListing />} />
-                      <Route
-                        path="/products/:category"
-                        element={<ProductListing />}
-                      />
-                      <Route
-                        path="/products/:category/:id"
-                        element={<ProductDetails />}
-                      />
-                      <Route path="/wishlist" element={<Wishlist />} />
-                      <Route path="/cart" element={<Cart />} />
-                      <Route path="/profile" element={<Profile />} />
-                      <Route path="/checkout" element={<Checkout />} />
-                    </Routes>
-                  </main>
-
-                  <Footer />
-                </div>
-              </Router>
-            </CartProvider>
-          </AddressProvider>
-        </WishlistProvider>
-      </FilterProvider>
-    </UserProvider>
-    </OrderProvider>
-
+            <Footer />
+          </div>
+        </Router>
+      </ProviderWrapper>
       {/* TOASTS */}
       <ToastContainer
         position="bottom-right"

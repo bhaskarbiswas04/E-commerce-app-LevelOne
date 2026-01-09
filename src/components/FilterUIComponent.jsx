@@ -45,7 +45,7 @@ export default function FilterUIComponent() {
   // CLEAR FILTERS
   const clearFilters = () => {
     setFilters({
-      price: 3000,
+      price: 5000,
       categories: [],
       rating: "1 Stars & above",
       sortBy: "low-to-high",
@@ -69,21 +69,21 @@ export default function FilterUIComponent() {
 
       <div className="d-flex justify-content-between text-muted small mb-1">
         <span>50</span>
-        <span>3000</span>
+        <span>5000</span>
       </div>
 
       <input
         type="range"
         className="form-range custom-range"
         min="50"
-        max="3000"
+        max="5000"
         value={filters.price}
         onChange={(e) => updatePrice(e.target.value)}
         style={{
           height: "6px",
           background: `linear-gradient(to right, #0d6efd ${
-            (filters.price / 3000) * 100
-          }%, #ddd ${(filters.price / 3000) * 100}%)`,
+            (filters.price / 5000) * 100
+          }%, #ddd ${(filters.price / 5000) * 100}%)`,
           borderRadius: "5px",
         }}
       />

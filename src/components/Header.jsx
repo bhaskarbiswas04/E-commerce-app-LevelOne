@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useWishlist } from "../context/WishlistContext";
 import { useCart } from "../context/CartContext";
 import { useFilter } from "../context/FilterContext";
 import { FaUser, FaHeart, FaShoppingCart } from "react-icons/fa";
 
 export default function Header() {
+  
   const { wishlist } = useWishlist();
   const { cart } = useCart();
   const { filters, setFilters } = useFilter();
+
+  const location = useLocation();
+  const showSearch = location.pathname === "/products" ;  // showing search bar only in ProductListing Page.
 
   const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
 
@@ -33,27 +37,29 @@ export default function Header() {
         <div className="collapse navbar-collapse mt-3 mt-lg-0" id="mainNavbar">
           <div className="d-flex align-items-center w-100 gap-2">
             {/* SEARCH (CENTERED ON DESKTOP) */}
-            <div
-              className="mx-lg-auto"
-              style={{
-                flexGrow: 1,
-                maxWidth: "500px", // ✅ keeps it centered & controlled
-              }}
-            >
-              <input
-                className="form-control"
-                type="search"
-                placeholder="Search products..."
-                value={filters.search}
-                onChange={(e) =>
-                  setFilters((prev) => ({
-                    ...prev,
-                    search: e.target.value,
-                    isFiltered: e.target.value.length > 0,
-                  }))
-                }
-              />
-            </div>
+            {showSearch && (
+              <div
+                className="mx-lg-auto"
+                style={{
+                  flexGrow: 1,
+                  maxWidth: "500px",
+                }}
+              >
+                <input
+                  className="form-control"
+                  type="search"
+                  placeholder="Search products..."
+                  value={filters.search}
+                  onChange={(e) =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      search: e.target.value,
+                      isFiltered: e.target.value.length > 0,
+                    }))
+                  }
+                />
+              </div>
+            )}
 
             {/* ICONS (RIGHT SIDE) */}
             <div className="d-flex gap-2 ms-lg-auto">
