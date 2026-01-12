@@ -1,3 +1,6 @@
+import PageLoader from "../components/PageLoader";
+
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
@@ -6,12 +9,25 @@ export default function Cart() {
   const navigate = useNavigate();
   const { cart, removeFromCart, updateQty } = useCart();
   const { toggleWishlist } = useWishlist();
+  const [loading, setLoading] = useState(true);
 
   const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   const discount = 299;
   const deliveryCharge = cart.length > 0 ? 99 : 0;
   const totalAmount = totalPrice - discount + deliveryCharge;
+
+  useEffect(() => {
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
+     if (loading) {
+       return <PageLoader />;
+     }
 
   return (
     <div className="container my-4">

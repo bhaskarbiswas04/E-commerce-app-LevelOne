@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import FilterUIComponent from "../components/FilterUIComponent";
+import PageLoader from "../components/PageLoader";
 import { useFilter } from "../context/FilterContext";
 
 export default function ProductListing() {
@@ -47,7 +48,7 @@ export default function ProductListing() {
     }
   }, [category, setFilters]);
 
-  if (loading) return <p className="p-4">Loading products...</p>;
+  if (loading) return <PageLoader />;
 
   let filteredProducts = [...products];
 
@@ -88,7 +89,7 @@ export default function ProductListing() {
               data-bs-toggle="offcanvas"
               data-bs-target="#mobileFilter"
             >
-              ☰ Filters
+              ᯤ Filters
             </button>
           </div>
 

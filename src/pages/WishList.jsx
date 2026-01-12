@@ -1,3 +1,6 @@
+import PageLoader from "../components/PageLoader";
+
+import { useEffect, useState } from "react";
 import { useWishlist } from "../context/WishlistContext";
 import { useCart } from "../context/CartContext";
 import { FaHeart } from "react-icons/fa";
@@ -5,8 +8,22 @@ import { FaHeart } from "react-icons/fa";
 export default function Wishlist() {
   const { wishlist, toggleWishlist } = useWishlist();
   const { addToCart } = useCart();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+   if (loading) {
+     return <PageLoader />;
+   }
 
   return (
+    
     <div className="container my-4">
       <h4 className="fw-bold mb-4 text-center">My Wishlist</h4>
 
@@ -82,6 +99,7 @@ export default function Wishlist() {
           </div>
         ))}
       </div>
-    </div>  
+    </div>
+
   );
 }
