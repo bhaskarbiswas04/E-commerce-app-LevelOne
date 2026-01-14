@@ -35,9 +35,20 @@ export default function Cart() {
 
       <div className="row g-4">
         {/* LEFT: CART ITEMS */}
-        <div className="col-12 col-md-8">
+        <div
+          className={`col-12 ${
+            cart.length === 0 ? "d-flex justify-content-center" : "col-md-8"
+          }`}
+        >
           {cart.length === 0 && (
-            <p className="text-center text-muted">Your cart is empty 🛒</p>
+            <div
+              className="d-flex justify-content-center align-items-center w-100"
+              style={{ minHeight: "50vh" }}
+            >
+              <p className="text-center text-muted fs-5">
+                Your cart is empty 🛒
+              </p>
+            </div>
           )}
 
           {cart.map((item) => (

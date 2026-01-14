@@ -63,9 +63,15 @@ export default function Checkout() {
             <h6 className="fw-bold mb-3">Select Delivery Address</h6>
 
             {addresses.length === 0 && (
-              <p className="text-muted">
-                No saved addresses. Please add one from Profile.
-              </p>
+              <div className="text-center py-3">
+                <p className="text-muted mb-3">No saved addresses found.</p>
+                <button
+                  className="btn btn-outline-primary btn-sm"
+                  onClick={() => navigate("/profile")}
+                >
+                  + Add Address
+                </button>
+              </div>
             )}
 
             {addresses.map((addr) => (

@@ -120,7 +120,7 @@ export default function ProductListing() {
 
           {/* ===== PRODUCTS ===== */}
           <div className="col-12 col-lg-9 col-xl-10">
-            <div className="mx-4 p-md-4" style={{ backgroundColor: "#eae1e1" }}>
+            <div className="mx-4 p-md-4" style={{ backgroundColor: "#eef1c2ff" }}>
               {/* HEADER */}
               <div className="mb-4">
                 <h4 className="fw-bold">
