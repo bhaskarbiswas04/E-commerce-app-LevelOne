@@ -1,12 +1,11 @@
-export default function CollectionCard({
-  title,
-  description,
-  image,
-}) {
-
-    const handleClick = ()=>{}
+export default function CollectionCard({ title, description, image }) {
+  const handleClick = () => {};
   return (
-    <div className="collection-card d-flex align-items-center p-4" onClick={handleClick} style={{cursor: "pointer"}}>
+    <div
+      className="collection-card d-flex align-items-center p-4"
+      onClick={handleClick}
+      style={{ cursor: "pointer" }}
+    >
       {/* Left Image Box */}
       <div className="image-box me-4">
         <img src={image} alt={title} />

@@ -105,7 +105,7 @@ export default function Home() {
               <CollectionCard
                 title={item.title}
                 description={item.description}
-                image={item.image}
+                image={item.image} 
               />
             </div>
           ))}
