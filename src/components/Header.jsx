@@ -20,7 +20,7 @@ export default function Header() {
       <div className="container-fluid">
         {/* BRAND */}
         <Link className="navbar-brand" to="/">
-          MyShoppingSite
+          Wink Shop
         </Link>
 
         {/* TOGGLER */}
