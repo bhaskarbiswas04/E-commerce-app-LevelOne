@@ -47,4 +47,37 @@ A full-featured E-Commerce web application built using the MERN stack, simulatin
 
 ---
 
-## Folder Structure
+## Application Flow
+1. User browses products
+2. Adds products to cart
+3. Updates quantity or removes items
+4. Proceeds to checkout
+5. Selects/creates address
+6. Places order
+7. Order stored and displayed in order history
+
+---
+
+## Key Concepts Implemented
+
+- Global State Management using Context API
+- Component Reusability
+- Dynamic Routing
+- Data-driven UI Rendering
+
+---
+
+## Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/bhaskarbiswas04/E-commerce-app-LevelOne.git
+
+# Navigate to project folder
+cd ecommerce-app
+
+# Install dependencies
+npm install
+
+# Run the app
+npm run dev
