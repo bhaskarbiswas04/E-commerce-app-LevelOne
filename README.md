@@ -4,14 +4,12 @@ A full-featured E-Commerce web application built using the MERN stack, simulatin
 
 ---
 
-## 🚀 Live Demo
-👉 [Add your deployed link here]
-
+## [Live Demo](https://e-commerce-app-level-one.vercel.app/)
 ---
 
-## 📌 Features
+## Features
 
-### 👤 User Features
+### User Features
 - Browse products by category
 - View detailed product pages
 - Add/remove items from cart
@@ -20,13 +18,13 @@ A full-featured E-Commerce web application built using the MERN stack, simulatin
 - Checkout and place orders
 - View order history
 
-### 🛒 Cart & Checkout
+### Cart & Checkout
 - Global cart state using Context API
 - Real-time price calculation
 - Discount & delivery charge handling
 - Address selection during checkout
 
-### ⚙️ Core Functionalities
+### Core Functionalities
 - Dynamic routing using React Router
 - Reusable components (ProductCard, CartItem, etc.)
 - Clean and scalable folder structure
@@ -34,20 +32,19 @@ A full-featured E-Commerce web application built using the MERN stack, simulatin
 
 ---
 
-## 🧠 Tech Stack
+## Tech Stack
 
 ### Frontend
 - React.js
 - Context API (State Management)
 - React Router DOM
-- CSS / Tailwind (if used)
+- Bootstrap
 
-### Backend (Planned / MERN Upgrade)
+### Backend
 - Node.js
 - Express.js
 - MongoDB
-- JWT Authentication
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
