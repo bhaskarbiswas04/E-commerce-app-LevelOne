@@ -81,3 +81,12 @@ npm install
 
 # Run the app
 npm run dev
+
+---
+
+## Author
+
+**Bhaskar Biswas**
+
+* GitHub: https://github.com/bhaskarbiswas04
+* LinkedIn: https://www.linkedin.com/in/bhaskarb04/
