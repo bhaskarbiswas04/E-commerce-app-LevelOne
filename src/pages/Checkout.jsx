@@ -16,7 +16,7 @@ export default function Checkout() {
   const deliveryCharge = cart.length > 0 ? 99 : 0;
   const totalAmount = totalPrice - discount + deliveryCharge;
 
-  // 🔥 NEW: handle order confirm
+  // Handle order confirm
   const handleConfirmOrder = () => {
     const selectedAddress = addresses.find(
       (addr) => addr.id === selectedAddressId
@@ -30,8 +30,8 @@ export default function Checkout() {
       totalAmount,
     });
 
-    clearCart(); // 🧹 empty cart
-    navigate("/profile"); // ➜ go to profile (order history)
+    clearCart(); // empty cart
+    navigate("/profile"); // go to profile
   };
 
   return (
@@ -62,18 +62,14 @@ export default function Checkout() {
           <div className="card p-3 shadow-sm border-0">
             <h6 className="fw-bold mb-3">Select Delivery Address</h6>
 
+            {/* NO ADDRESS CASE */}
             {addresses.length === 0 && (
-              <div className="text-center py-3">
-                <p className="text-muted mb-3">No saved addresses found.</p>
-                <button
-                  className="btn btn-outline-primary btn-sm"
-                  onClick={() => navigate("/profile")}
-                >
-                  + Add Address
-                </button>
-              </div>
+              <p className="text-muted text-center mb-3">
+                No saved addresses found.
+              </p>
             )}
 
+            {/* SAVED ADDRESSES */}
             {addresses.map((addr) => (
               <div key={addr.id} className="border rounded p-3 mb-2">
                 <div className="form-check">
@@ -92,6 +88,16 @@ export default function Checkout() {
                 <p className="mb-0 text-muted">{addr.address}</p>
               </div>
             ))}
+
+            {/* ADD NEW ADDRESS — ALWAYS VISIBLE */}
+            <div className="text-center mt-3">
+              <button
+                className="btn btn-outline-primary btn-sm"
+                onClick={() => navigate("/profile")}
+              >
+                + Add New Address
+              </button>
+            </div>
           </div>
         </div>
 

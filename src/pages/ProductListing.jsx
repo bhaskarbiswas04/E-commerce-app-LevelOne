@@ -48,7 +48,7 @@ export default function ProductListing() {
     }
   }, [category, setFilters]);
 
-  if (loading) return <PageLoader />;
+ if(loading) return <PageLoader />
 
   let filteredProducts = [...products];
 
@@ -61,7 +61,7 @@ export default function ProductListing() {
       filters.categories.includes(p.category)
     );
   }
-
+   
   // RATING FILTER
   const minRating = Number(filters.rating[0]);
   filteredProducts = filteredProducts.filter((p) => p.rating >= minRating);

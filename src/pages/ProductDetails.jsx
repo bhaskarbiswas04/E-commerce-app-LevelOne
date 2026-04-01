@@ -27,6 +27,7 @@ export default function ProductDetails() {
   const isClothing = ["men", "women", "kids"].includes(category.toLowerCase());
   const sizes = ["S", "M", "L", "XL", "XXL"];
 
+
   // Fetch product + all products
   useEffect(() => {
     async function fetchData() {
@@ -58,6 +59,8 @@ export default function ProductDetails() {
       </div>
     );
   }
+
+
 
   // product not found
   if (!product) {
