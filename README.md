@@ -1,4 +1,4 @@
-# 🛒 E-Commerce Web Application (MERN Stack)
+# 🛒 E-Commerce Web Application (Wynk Shop)
 
 A full-featured E-Commerce web application built using the MERN stack, simulating a real-world online shopping experience with product browsing, cart management, checkout flow, and order handling.
 
