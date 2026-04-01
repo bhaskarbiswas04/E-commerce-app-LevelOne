@@ -50,7 +50,7 @@ A full-featured E-Commerce web application built using the MERN stack, simulatin
 ### Backend `.env`
 
 ```env
-MONGODB= mongodb+srv://04bhaskarbiswas_db_user:GDZtmPzt12c4qFDD@neog.4feyuvb.mongodb.net/?retryWrites=true&w=majority&appName=neoG
+PORT=3000
 ```
 ---
 
