@@ -167,8 +167,13 @@ Retrieves a single category by ID.
 ---
 
 ## 📍 Screenshots
+<img width="1910" height="792" alt="WynkShop_Wishlist" src="https://github.com/user-attachments/assets/f8fb4862-d5af-4d46-9fbc-b9847d8d97a5" />
+<img width="1897" height="868" alt="WynkShop_ProfilePage" src="https://github.com/user-attachments/assets/a5517940-de1f-4975-a2f9-735eb8583cc8" />
+<img width="1918" height="853" alt="WynkShop_Homepage" src="https://github.com/user-attachments/assets/a7711b5a-0140-4a93-8ac5-ad1b60cc20ac" />
+<img width="1916" height="862" alt="WynkShop_CheckoutPage" src="https://github.com/user-attachments/assets/179b0ea2-59d4-4210-ba97-33c31a35618d" />
+<img width="1905" height="857" alt="WynkShop_CartPage" src="https://github.com/user-attachments/assets/c4a0a051-e914-4590-a8c6-d457429dc3a0" />
 
-
+---
 
 ## Author
 
