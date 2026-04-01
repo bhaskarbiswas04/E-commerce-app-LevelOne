@@ -3,8 +3,7 @@
 A full-featured E-Commerce web application built using the MERN stack, simulating a real-world online shopping experience with product browsing, cart management, checkout flow, and order handling.
 
 ---
-
-## [Live Demo](https://e-commerce-app-level-one.vercel.app/)
+## 🌐 Experience the application live: [Wynk Shop](https://e-commerce-app-level-one.vercel.app/)
 ---
 
 ## Features
