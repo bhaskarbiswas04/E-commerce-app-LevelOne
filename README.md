@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# 🛒 E-Commerce Web Application (Wynk Shop)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-featured E-Commerce web application built using the MERN stack, simulating a real-world online shopping experience with product browsing, cart management, checkout flow, and order handling.
 
-## Available Scripts
+---
+## 🌐 Experience the application live: [Wynk Shop](https://e-commerce-app-level-one.vercel.app/)
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### User Features
+- Browse products by category
+- View detailed product pages
+- Add/remove items from cart
+- Update product quantity
+- Address management (Add/Edit/Delete)
+- Checkout and place orders
+- View order history
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Cart & Checkout
+- Global cart state using Context API
+- Real-time price calculation
+- Discount & delivery charge handling
+- Address selection during checkout
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Core Functionalities
+- Dynamic routing using React Router
+- Reusable components (ProductCard, CartItem, etc.)
+- Clean and scalable folder structure
+- Responsive UI for all devices
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `npm run build`
+### Frontend
+- React.js
+- Context API (State Management)
+- React Router DOM
+- Bootstrap
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend
+- Node.js
+- Express.js
+- MongoDB
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Application Flow
+1. User browses products
+2. Adds products to cart
+3. Updates quantity or removes items
+4. Proceeds to checkout
+5. Selects/creates address
+6. Places order
+7. Order stored and displayed in order history
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Key Concepts Implemented
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Global State Management using Context API
+- Component Reusability
+- Dynamic Routing
+- Data-driven UI Rendering
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Installation & Setup
 
-## Learn More
+```bash
+# Clone the repository
+git clone https://github.com/bhaskarbiswas04/E-commerce-app-LevelOne.git
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Navigate to project folder
+cd ecommerce-app
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Install dependencies
+npm install
 
-### Code Splitting
+# Run the app
+npm run dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Bhaskar Biswas**
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* GitHub: https://github.com/bhaskarbiswas04
+* LinkedIn: https://www.linkedin.com/in/bhaskarb04/
