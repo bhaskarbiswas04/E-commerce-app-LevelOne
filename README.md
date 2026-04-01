@@ -6,7 +6,7 @@ A full-featured E-Commerce web application built using the MERN stack, simulatin
 ## 🌐 Experience the application live: [Wynk Shop](https://e-commerce-app-level-one.vercel.app/)
 ---
 
-## Features
+## 📍 Features
 
 ### User Features
 - Browse products by category
@@ -31,7 +31,7 @@ A full-featured E-Commerce web application built using the MERN stack, simulatin
 
 ---
 
-## Tech Stack
+## 📍 Tech Stack
 
 ### Frontend
 - React.js
@@ -46,7 +46,7 @@ A full-featured E-Commerce web application built using the MERN stack, simulatin
 
 ---
 
-## Application Flow
+## 📍 Application Flow
 1. User browses products
 2. Adds products to cart
 3. Updates quantity or removes items
@@ -57,7 +57,7 @@ A full-featured E-Commerce web application built using the MERN stack, simulatin
 
 ---
 
-## Key Concepts Implemented
+## 📍 Key Concepts Implemented
 
 - Global State Management using Context API
 - Component Reusability
@@ -83,6 +83,92 @@ npm run dev
 ```
 
 ---
+
+## 📍 API Documentation
+
+###  Products
+
+#### GET /products
+
+Retrieves all products or filtered products based on query parameters.
+
+**Sample Response:**
+
+```json
+[
+  {
+    "_id": "product_Id",
+    "name": "Mens Leather Shoe",
+    "price": "4900",
+    "image": "image_url",
+    "rating": "4.5",
+    "category": "Mens",
+  }
+]
+```
+
+---
+
+#### GET /products/:id
+
+Retrieves a single product by ID.
+
+**Sample Response:**
+
+```json
+  {
+    "_id": "product_Id",
+    "name": "Mens Leather Shoe",
+    "price": "4900",
+    "image": "image_url",
+    "rating": "4.5",
+    "category": "Mens",
+  }
+```
+
+---
+
+###  Categories
+
+#### GET /categories
+
+Retrieves all categories or filtered categories.
+
+**Sample Response:**
+
+```json
+[
+  {
+"_id": "category_id",
+"title": "Men",
+"imageUrl": "https://cdn.pixabay.com/photo/2024/11/08/05/28/man-9182458_1280.jpg",
+"__v": 0
+}
+]
+```
+
+---
+
+#### GET /categories/:id
+
+Retrieves a single category by ID.
+
+**Sample Response:**
+
+```json
+  {
+"id": category_id,
+"title": "Men",
+"imageUrl": "https://cdn.pixabay.com/photo/2024/11/08/05/28/man-9182458_1280.jpg",
+"__v": 0
+  }
+```
+
+---
+
+## 📍 Screenshots
+
+
 
 ## Author
 
