@@ -43,7 +43,15 @@ A full-featured E-Commerce web application built using the MERN stack, simulatin
 - Node.js
 - Express.js
 - MongoDB
+---
 
+## 📍 Environment Setup
+
+### Backend `.env`
+
+```env
+MONGODB= mongodb+srv://04bhaskarbiswas_db_user:GDZtmPzt12c4qFDD@neog.4feyuvb.mongodb.net/?retryWrites=true&w=majority&appName=neoG
+```
 ---
 
 ## 📍 Application Flow
